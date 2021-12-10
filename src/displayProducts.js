@@ -20,6 +20,13 @@ const display = (products, element) => {
     </footer>
   </article>`
   }).join('')
+  element.addEventListener('click', function (e) {
+    // when clicking the icon, it returns the icon, not the button
+    const parent = e.target.parentElement // parentEl is the button
+    if (parent.classList.contains('product-cart-btn')) {
+      addToCart(parent.dataset.id)
+    }
+  })
 }
 
 export default display
