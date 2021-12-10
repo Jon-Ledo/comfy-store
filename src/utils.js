@@ -10,7 +10,15 @@ const getElement = (selection) => {
   throw new Error(`Please check "${selection}" selector, no such element exist`)
 }
 
-const formatPrice = () => {}
+// price data stored in cents
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat
+const formatPrice = (price) => {
+  let formattedPrice = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD'
+  }).format((price / 100).toFixed(2))
+  return formattedPrice
+}
 
 const getStorageItem = (item) => {
   let storageItem = localStorage.getItem(item)
