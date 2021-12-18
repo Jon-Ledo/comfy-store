@@ -1,7 +1,7 @@
 import { formatPrice } from './utils.js'
 import { addToCart } from './cart/setupCart.js'
 
-const display = (products, element) => {
+const display = (products, element, filters) => {
   // display products
   element.innerHTML = products.map((product) => {
     const {name, id, image, price} = product
@@ -20,6 +20,9 @@ const display = (products, element) => {
     </footer>
   </article>`
   }).join('')
+
+  if (filters) return
+
   element.addEventListener('click', function (e) {
     // when clicking the icon, it returns the icon, not the button
     const parent = e.target.parentElement // parentEl is the button
